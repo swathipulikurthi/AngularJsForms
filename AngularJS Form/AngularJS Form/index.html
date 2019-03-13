@@ -1,0 +1,88 @@
+<html ng-app="myApp">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.js"></script>
+    <script src="app.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            font-family: 'Roboto';
+            font-size: 22px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body background="img.jpg">
+    <p>Angular Js App</p>
+    <div ng-controller="HomeController">
+        {{vm.message}}
+
+        <div class="row" id="CreateTest">
+            <div class="col-sm-12">
+
+                <form name="demoForm" novalidate>
+                    <div class="row">
+                        <div class="col-sm-4 form-group"
+                            ng-class="{'has-error': demoForm.$submitted && demoForm.userName.$invalid}">
+                            <label class="control-label">User Name</label>
+                        </div>
+                        <div class="col-sm-4 form-group"> <input class="form-control" name="userName"
+                                ng-model="vm.user.name" required />
+                            <p class="small" ng-if="demoForm.$submitted && demoForm.userName.$error.required">User Name
+                                is Required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group"
+                            ng-class="{'has-error': demoForm.$submitted && demoForm.userEmail.$invalid}">
+                            <label class="control-label">Email</label>
+                        </div>
+                        <div class="col-sm-4 form-group"><input type="email" class="form-control" name="userEmail"
+                                ng-model="vm.user.email" required />
+                            <p class="small" ng-if="demoForm.$submitted && demoForm.userEmail.$error.required">Email is
+                                Required.</p>
+                            <p class="small" ng-if="demoForm.$submitted && demoForm.userEmail.$error.email">Email is
+                                Invalid.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group"
+                            ng-class="{'has-error': demoForm.$submitted && demoForm.userTax.$invalid}">
+                            <label class="control-label">Tax</label></div>
+                        <div class="col-sm-4 form-group"> <input type="number" class="form-control" name="userTax"
+                                ng-model="vm.user.Tax" ng-model-options="{updateOn:'blur'}" min=200 required />
+                            <p class="small" ng-if="demoForm.$submitted && demoForm.userTax.$error.min">Minimum Tax
+                                value is 200
+                            </p>
+                            <p class="small" ng-if="demoForm.$submitted && demoForm.userTax.$error.required">Tax is
+                                Required.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <!-- <button type="reset" class="btn btn-primary">Reset</button> -->
+                            <button type="button" class="btn btn-primary" ng-click="resetForm();">Reset</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
